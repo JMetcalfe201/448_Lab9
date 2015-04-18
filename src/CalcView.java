@@ -24,7 +24,7 @@ public class CalcView
 	
 	public String Prompt_UseLast(double prev)
 	{
-		Pln("Would you like to use the previous answer (y/n)? (" + prev + ")");
+		Pln("Would you like to use the previous answer (" + prev + ") for: \n1) first value\n2) second value\n3) neither");
 		
 		return scan.nextLine();
 

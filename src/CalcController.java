@@ -14,7 +14,7 @@ public class CalcController
 	{
 		int input = 0;
 		boolean inputValid = true;
-		boolean useLast = false;
+		int useLast = 0;
 		double[] args = new double[2];
 		
 		do
@@ -30,9 +30,18 @@ public class CalcController
 		
 		while(input != 5)
 		{
-			useLast = model.CharToBool(view.Prompt_UseLast(model.GetPrevAnswer()));
-			
-			if(useLast)
+			do
+			{
+				try{
+					useLast = Integer.parseInt(view.Prompt_UseLast(model.GetPrevAnswer()));
+					inputValid = true;
+				}catch(NumberFormatException e){
+					inputValid = false;
+					view.Print_InvalidInput();
+				}
+			}while(!inputValid);
+				
+			if(useLast < 3)
 			{
 				do
 				{
@@ -44,6 +53,16 @@ public class CalcController
 						view.Print_InvalidInput();
 					}
 				}while(!inputValid);
+				
+				if(useLast == 2)
+				{
+					args[1] = model.GetPrevAnswer();
+				}else
+				{
+					args[1] = args[0];
+					args[0] = model.GetPrevAnswer();
+				}
+				
 			}else
 			{
 				String[] temp = new String[2];
@@ -65,32 +84,16 @@ public class CalcController
 			switch(input)
 			{
 			case 1:
-				if(useLast){
-					model.AddLast(args[0]);
-				}else{
 					model.Add(args[0], args[1]);
-				}
 				break;
 			case 2:
-				if(useLast){
-					model.SubLast(args[0]);
-				}else{
 					model.Sub(args[0], args[1]);
-				}
 				break;
 			case 3:
-				if(useLast){
-					model.MultLast(args[0]);
-				}else{
 					model.Mult(args[0], args[1]);
-				}
 				break;
 			case 4:
-				if(useLast){
-					model.DivLast(args[0]);
-				}else{
 					model.Div(args[0], args[1]);
-				}
 				break;
 			default:
 				view.Print_InvalidInput();

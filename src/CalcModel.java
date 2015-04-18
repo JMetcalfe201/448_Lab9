@@ -19,30 +19,12 @@ public class CalcModel
 		return previousAnswer;
 	}
 	
-	public double AddLast(double d)
-	{
-		prevOperation[0] = String.valueOf(previousAnswer);
-		previousAnswer = d + previousAnswer;
-		prevOperation[1] = new String("+");
-		prevOperation[2] = String.valueOf(d);
-		return previousAnswer;
-	}
-	
 	public double Mult(double d1, double d2)
 	{
 		previousAnswer = d1 * d2;
 		prevOperation[0] = String.valueOf(d1);
 		prevOperation[1] = new String("*");
 		prevOperation[2] = String.valueOf(d2);
-		return previousAnswer;
-	}
-	
-	public double MultLast(double d)
-	{
-		prevOperation[0] = String.valueOf(previousAnswer);
-		previousAnswer = d * previousAnswer;
-		prevOperation[1] = new String("*");
-		prevOperation[2] = String.valueOf(d);
 		return previousAnswer;
 	}
 	
@@ -55,30 +37,12 @@ public class CalcModel
 		return previousAnswer;
 	}
 	
-	public double SubLast(double d)
-	{
-		prevOperation[0] = String.valueOf(previousAnswer);
-		previousAnswer = previousAnswer - d;
-		prevOperation[1] = new String("-");
-		prevOperation[2] = String.valueOf(d);
-		return previousAnswer;
-	}
-	
 	public double Div(double d1, double d2)
 	{
 		previousAnswer = d1 / d2;
 		prevOperation[0] = String.valueOf(d1);
 		prevOperation[1] = new String("/");
 		prevOperation[2] = String.valueOf(d2);
-		return previousAnswer;
-	}
-	
-	public double DivLast(double d)
-	{
-		prevOperation[0] = String.valueOf(previousAnswer);
-		previousAnswer = previousAnswer / d;
-		prevOperation[1] = new String("/");
-		prevOperation[2] = String.valueOf(d);
 		return previousAnswer;
 	}
 	
